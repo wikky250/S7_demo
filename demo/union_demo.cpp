@@ -24,7 +24,12 @@ void Qtunion_demo::CreateConnect()
 
 	QObject::connect(ui.pB_Read, &QPushButton::clicked, [=]()
 		{
-			int result = cla->read(ui.lE_address->text().toInt());
+			int result = cla->readDB(ui.lE_address->text().toInt());
 			ui.lE_Result->setText(QString::number(result));
+		});
+
+	QObject::connect(ui.pB_Write, &QPushButton::clicked, [=]()
+		{
+			int result = cla->writeDB(ui.lE_address->text().toInt(),ui.lE_Result->text().toInt());
 		});
 }
